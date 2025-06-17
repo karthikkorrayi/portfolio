@@ -1,13 +1,70 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Karthiii</title>
+    <title>portfolio - kk</title>
 <!--     <link rel="shortcut icon" href="e05023003c9013bfd2832c75dd7869f5.jpg" /> -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	<style>
+        @media (max-width: 768px) {
+  .intro-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro-text {
+    padding: 0 10px;
+  }
+}
+
+        @keyframes pulseShadow {
+            0% {
+                box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            }
+            50% {
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            }
+            100% {
+                box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            }
+        }
+
+        .intro-card {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  border-radius: 12px;
+  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); */
+  margin: 30px 0;
+  gap: 20px;
+  align-items: center;
+}
+
+.intro-img img {
+  width: 280px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.intro-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.intro-text h2 {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+
+.intro-text p {
+  line-height: 1.6;
+  font-size: 1em;
+  color: #444;
+}
+
 		
         table {
             width: 100%;
@@ -18,7 +75,108 @@
             padding: 8px;
             text-align: left;
         }
+        .education-container {
+            margin-top: 40px;
+        }
+
+        .education-container h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            text-transform: none;
+            text-align: left;
+        }
+
+        .education-card {
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+            transition: border-radius 2s ease;
+        }
+
+        .education-card:hover {
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .edu-entry {
+        display: flex;
+        gap: 15px;
+        padding: 10px 0;
+        transition: transform 0.3s ease;
+        border-radius: 8px;
+        }
+
+        .edu-entry:hover {
+        transform: scale(1.02);
+        animation: pulseShadow 1s ease-in-out;
+        }
+
+        .edu-logo {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        }
+
+        .edu-details p {
+        margin: 2px 0;
+        font-size: 0.95em;
+        }
+
+        .edu-details .edu-year {
+        color: #999;
+        font-weight: 300;
+        }
+
+        .divider {
+        border: none;
+        border-top: 1px solid #ddd;
+        margin: 0;
+        }
+
+        .hidden-entry {
+        display: none;
+        }
+
+        .show-all-btn {
+        all: unset;
+        margin-top: 15px;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        }
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0;
+}
+ 
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  text-align: center;
+  font-size: 0.85em;
+  color: #444;
+  transition: transform 0.2s ease;
+}
+
+.skill img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 5px;
+}
+
+.skill:hover {
+  transform: scale(1.1);
+}
+
+
     </style>
+
 </head>
 <body class="is-preload">
     <!-- Wrapper -->
@@ -54,52 +212,122 @@
         <!-- Main -->
         <section class="main" id="main">
             <!-- Featured Post -->
-            <article class="post featured">
-                <img src="images/kk.png" alt=""  height="400" width="300" />
-                <p>Hi there! I'm Korrayi Karthik, a graduate from Lovely Professional University (LPU) with a degree in Computer Science and Engineering (CSE). Originally from Andhra Pradesh, I now work in the tech industry. 
-			I'm known for being able to learn new things quickly and for being open to trying out new technologies at work. 
-			Outside of work, I like exploring new places and learning new things. I enjoy taking photos and making sketches to capture special moments. 
-			It's my way of telling stories and appreciating the beauty around us.
+            <article class="intro-card">
+  <div class="intro-img">
+    <img src="images/kk.png" alt="Karthik Korrayi" />
+  </div>
+  <div class="intro-text education-container">
+    <h2>Hi there! I'm Karthik 👋</h2>
+    <p>
+      A techie from Andhra Pradesh, India who loves solving problems and building cool stuff on the web. I graduated from LPU with a degree in Computer Science, and ever since then, I’ve been diving into the world of code — from backend development with Java and Spring Boot, 
+      to front-end fun with Angular, designing with Figma and even playing around with DevOps, and automation tools like UiPath.<br>
+I really enjoy learning new technologies — it’s like a puzzle I can’t wait to figure out. If there’s a challenge at work or something new to explore, I’m all in.<br>
+When I’m not in front of a screen, you’ll probably find me taking photos, sketching something random, or getting lost in a good playlist. 
+I’m also the type who gets excited about travel plans and chai breaks.<br>
+I’m all about growing, creating, and connecting with people. So, whether it’s a project or just a chat — I’m always up for it!
+    </p>
+  </div>
+</article>
+
                    
 					
-					<br><br><b><u>Skills and Technologies used:</u></b>
-                    C++, Springboot, Java, Maven, AngularJs, NodeJs, Git, Microsoft Azure, Ui Path Studio, Visual Studio Code, Intellij, MySQL, MongoDB, Figma
-                    <br> 
-                    <br><b><u>Education:</u></b>
-                    <!-- <br><strong>Lovely Professional University</strong> &emsp; - Bachelor of Technology &emsp;[2019 to 2023]<br>
-                    Phagwara, Punjab. &emsp;&emsp;&emsp; &emsp; &emsp; &emsp; &ensp;<br>
-                    <strong>Sri Chaitanya College</strong> &emsp; &emsp; &emsp; &emsp; &ensp; - Intermediate (MPC) &emsp; &ensp; &ensp; [2017 to 2019]<br>
-                    Visakhapatnam, Andhra Pradesh<br>
-                    <strong>Narayana High School</strong> &emsp; &emsp; &emsp; &emsp; - Matriculation (SSC)&emsp; &ensp; &ensp; [2016 to 2017]<br>
-                    Visakhapatnam, Andhra Pradesh<br> -->
-					<table>
-						<tr>
-							<th>Institution</th>
-							<th>Degree</th>
-							<th>Duration</th>
-							<th>Location</th>
-						</tr>
-						<tr>
-							<td><strong>Lovely Professional University</strong></td>
-							<td>Bachelor of Technology</td>
-							<td>2019 to 2023</td>
-							<td>Phagwara, Punjab</td>
-						</tr>
-						<tr>
-							<td><strong>Sri Chaitanya College</strong></td>
-							<td>Intermediate (MPC)</td>
-							<td>2017 to 2019</td>
-							<td>Visakhapatnam, Andhra Pradesh</td>
-						</tr>
-						<tr>
-							<td><strong>Narayana High School</strong></td>
-							<td>Matriculation (SSC)</td>
-							<td>2016 to 2017</td>
-							<td>Visakhapatnam, Andhra Pradesh</td>
-						</tr>
-					</table>
-                    <br>You can download <a href="Certificates/Korrayi Karthik.pdf" > <b>My CV</b></a> here as well.
-                </p>
+					<div class="skills-carousel-container education-container">
+                        <h2>Skills and Technologies used</h2>
+<div class="skills-grid">
+  <div class="skill"><img src="images/java.png" alt="Java"><span>Java</span></div>
+  <div class="skill"><img src="images/springboot.png" alt="Spring Boot"><span>Spring Boot</span></div>
+  <div class="skill"><img src="images/angular.png" alt="Angular"><span>Angular</span></div>
+  <div class="skill"><img src="images/nodejs.png" alt="Node.js"><span>Node.js</span></div>
+  <div class="skill"><img src="images/mysql.png" alt="MySQL"><span>MySQL</span></div>
+  <div class="skill"><img src="images/mongo.png" alt="MongoDB"><span>MongoDB</span></div>
+  <div class="skill"><img src="images/jira.png" alt="Git"><span>Jira</span></div>
+  <div class="skill"><img src="images/github.svg" alt="Git"><span>Github</span></div>
+  <div class="skill"><img src="images/gitlab.png" alt="Git"><span>Gitlab</span></div>
+  <div class="skill"><img src="images/intellij.png" alt="Git"><span>IntelliJ</span></div>
+  <div class="skill"><img src="images/vscode.png" alt="Git"><span>VS Code</span></div>
+  <div class="skill"><img src="images/jenkins.svg" alt="Git"><span>Jenkins</span></div>
+  <div class="skill"><img src="images/azure.png" alt="Azure"><span>Azure</span></div>
+  <div class="skill"><img src="images/azuredevops.svg" alt="Azure"><span>ADO</span></div>
+  <div class="skill"><img src="images/aws.png" alt="Azure"><span>AWS</span></div>
+  <div class="skill"><img src="images/bash.svg" alt="Azure"><span>Bash</span></div>
+  <div class="skill"><img src="images/powershell.png" alt="Azure"><span>Powershell</span></div>
+  <div class="skill"><img src="images/bicep.webp" alt="Azure"><span>Bicep</span></div>
+  <div class="skill"><img src="images/terraform.png" alt="Azure"><span>Terraform</span></div>
+  <div class="skill"><img src="images/arm.png" alt="Azure"><span>ARM</span></div>
+  <div class="skill"><img src="images/uipath.svg" alt="UiPath"><span>UiPath</span></div>
+  <div class="skill"><img src="images/figma.webp" alt="Figma"><span>Figma</span></div>
+  <div class="skill"><img src="images/powerbi.png" alt="Figma"><span>Power BI</span></div>
+  <div class="skill"><img src="images/ms.png" alt="Figma"><span>MS Office</span></div>
+</div>
+
+                    </div> 
+                    <div class="experience-section">
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div class="timeline-line" id="timelineLine"></div>
+
+    <div class="experience-entry">
+      <h3>Software Engineer Intern @ Infosys</h3>
+      <span>Jan 2023 – May 2023</span>
+      <p>Worked on internal automation tools using UiPath and developed RESTful services with Spring Boot. Collaborated on CI/CD pipelines using Azure DevOps.</p>
+    </div>
+
+    <div class="experience-entry">
+      <h3>Cloud Projects (Freelance)</h3>
+      <span>Jul 2023 – Present</span>
+      <p>Built and deployed cloud-native solutions using Azure, Terraform, and Bicep. Focused on secure, scalable architecture and automation scripts.</p>
+    </div>
+
+    <div class="experience-entry">
+      <h3>Personal Projects</h3>
+      <span>Ongoing</span>
+      <p>From full-stack apps to infrastructure automation, I love experimenting with Angular, Spring Boot, GitHub Actions, and whatever I’m curious about next.</p>
+    </div>
+  </div>
+</div>
+
+
+                    <div class="education-container">
+  <h2>Education</h2>
+  <div class="education-card" id="educationCard">
+    <div class="edu-entry">
+      <img src="images/lpu-logo.png" alt="LPU Logo" class="edu-logo">
+      <div class="edu-details">
+        <p><strong>Lovely Professional University</strong></p>
+        <p>Bachelor of Technology - BTech, Computer Science</p>
+        <p class="edu-year">2019 - 2023</p>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="edu-entry">
+      <img src="images/sri_chaitanya_educational_institutions_logo.jpeg" alt="Sri Chaitanya Logo" class="edu-logo">
+      <div class="edu-details">
+        <p><strong>Sri Chaitanya College</strong></p>
+        <p>Intermediate, MPC</p>
+        <p class="edu-year">May 2017 - Mar 2019</p>
+      </div>
+    </div>
+
+    <div class="hidden-entry" id="hiddenEdu">
+      <hr class="divider" />
+      <div class="edu-entry">
+        <img src="images/narayana.png" alt="Narayana Logo" class="edu-logo">
+        <div class="edu-details">
+          <p><strong>Narayana High School</strong></p>
+          <p>10th, SSC</p>
+          <p class="edu-year">Mar 2017</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="show-all-btn" onclick="toggleEducation()">Show All 3 educations</button>
+  </div>
+</div>
+
+                    <!-- <br>You can download <a href="Certificates/Korrayi Karthik.pdf" > <b>My CV</b></a> here as well.
+                -->
 				
                 <div id="main">
                     <article>
@@ -126,6 +354,19 @@
         <ul><li>&copy; karthik-korrayi</li>
     </div>
     <!-- Scripts -->
+     <script>
+        
+function toggleEducation() {
+  const hidden = document.getElementById("hiddenEdu");
+  const btn = document.querySelector(".show-all-btn");
+  
+
+  const isExpanded = hidden.style.display === "block";
+  hidden.style.display = isExpanded ? "none" : "block";
+  btn.textContent = isExpanded ? "Show All 3 educations" : "";
+}
+</script>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>
