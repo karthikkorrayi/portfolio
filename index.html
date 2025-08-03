@@ -9,65 +9,25 @@
 
     <style>
 
-      @media (max-width: 768px) {
-        .timeline-container {
-          padding: 0 15px;
-        }
+@media (max-width: 768px) {
+  .timeline-entry,
+  .timeline-entry.left,
+  .timeline-entry.right {
+    width: 100%;
+    left: 0 !important;
+    text-align: left;
+    padding: 20px 10px;
+  }
 
-        .timeline-line,
-        .timeline-progress,
-        .timeline-entry::before {
-          display: none !important;
-        }
+  .timeline-card {
+    border-left: 5px solid #00094d;
+    border-right: none;
+  }
 
-        .timeline-entry,
-        .timeline-entry.left,
-        .timeline-entry.right {
-          position: relative;
-          width: 100%;
-          left: 0 !important;
-          padding: 0;
-          margin-bottom: 30px;
-          text-align: left;
-        }
-
-        .timeline-card {
-          background: #f9f9f9;
-          padding: 16px;
-          border-radius: 10px;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .timeline-card h3 {
-          font-size: 1.1em;
-          margin: 0 0 4px;
-          text-transform: none;
-          text-align: left;
-        }
-
-        .timeline-card span {
-          display: block;
-          font-size: 0.85em;
-          color: #666;
-          text-align: left;
-          margin-bottom: 8px;
-        }
-
-        .timeline-card p {
-          margin-top: 10px;
-          font-size: 0.95em;
-          color: #444;
-          text-transform: none;
-        }
-
-        .experience-section h2 {
-          text-align: left;
-          padding-left: 10px;
-          font-size: 1.5em;
-          font-weight: normal;
-          text-transform: none;
-        }
-      }
+  .timeline-entry::before {
+    display: none;
+  }
+}
 
       @keyframes pulseShadow {
         0% {
@@ -243,66 +203,82 @@
       }
 
       .timeline-card:hover {
-        animation: shakeCard 0.4s ease-in-out;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
       }
 
       .timeline-container {
-        position: relative;
-        padding: 50px 0;
-        width: 100%;
-        max-width: 1000px;
-        margin: auto;
-      }
+  position: relative;
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
 
       .timeline-line {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        width: 4px;
-        background: #ddd;
-        height: 100%;
-        z-index: 0;
-        overflow: hidden;
-      }
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 4px;
+  background: #ddd;
+  height: 100%;
+  z-index: 0;
+}
 
-      .timeline-progress {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: #00094d;
-        height: 0;
-        z-index: 1;
-        transition: height 1s ease;
-      }
+.timeline-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #00094d;
+  height: 0;
+  z-index: 1;
+  transition: height 1s ease;
+}
 
       .timeline-entry {
-        position: relative;
-        width: 50%;
-        padding: 20px;
-      }
+  position: relative;
+  width: 50%;
+  padding: 20px 30px;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
 
-      .timeline-entry.left {
-        left: 0;
-        text-align: left;
-      }
+.timeline-entry.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-      .timeline-entry.right {
-        left: 50%;
-        text-align: left;
-      }
+.timeline-entry.left {
+  left: 0;
+  text-align: right;
+}
 
-      .timeline-card {
-        background: #ffffff;
-        padding: 15px 20px;
-        border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        position: relative;
-        text-transform: none;
-      }
+.timeline-entry.right {
+  left: 50%;
+  text-align: left;
+}
 
-      .timeline-card h3 {
+.timeline-card {
+  background: #ffffff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  border-left: 5px solid #00094d;
+  transition: box-shadow 0.3s ease;
+}
+
+.timeline-entry.left .timeline-card {
+  margin-left: auto;
+  border-left: none;
+  border-right: 5px solid #00094d;
+}
+
+
+      /* .timeline-card h3 {
         text-transform: none;
         font-weight: 500; 
         margin-top: 0;
@@ -318,50 +294,48 @@
         margin: 10px 0 0;
         font-size: 0.95em;
         color: #444;
-      }
+      } */
 
       /* Dots */
-      .timeline-entry::before {
-        content: "";
-        position: absolute;
-        top: 30px;
-        width: 14px;
-        height: 14px;
-        background-color: #00094d;
-        border-radius: 50%;
-        z-index: 2;
-      }
 
-      .timeline-entry.left::before {
-        right: -7px;
-      }
+.timeline-entry::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  width: 14px;
+  height: 14px;
+  background-color: #00094d;
+  border-radius: 50%;
+  z-index: 2;
+}
 
-      .timeline-entry.right::before {
-        left: -7px;
-      }
+.timeline-entry.left::before {
+  right: -7px;
+}
 
-      .exp-header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 10px;
-      }
+.timeline-entry.right::before {
+  left: -7px;
+}
 
-      .exp-logo {
-        width: 50px;
-        height: 50px;
-        object-fit: contain;
-        border-radius: 6px;
-        flex-shrink: 0;
-      }
+     .exp-header a {
+  display: inline-block;
+}
+.exp-header a:hover {
+  opacity: 0.9;
+}
 
-      .exp-title {
-        display: flex;
-        flex-direction: row;
-        align-items: baseline;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
+.exp-logo {
+  width: 150px;
+  height:100px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.exp-title h3 {
+  font-size: 1.1em;
+  margin: 0;
+  font-weight: 600;
+}
 
       .exp-title h3 {
         font-size: 1em;
@@ -371,9 +345,25 @@
       }
 
       .exp-title .exp-year {
-        font-size: 0.85em;
-        color: #777;
-      }
+  font-size: 0.85em;
+  color: #888;
+}
+
+.timeline-card p {
+  font-size: 0.95em;
+  color: #444;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Company-specific color accents */
+.timeline-card.itc {
+  border-color: #003366;
+}
+
+.timeline-card.highradius {
+  border-color: #e46a3c;
+}
 
       .cv-download-btn {
         display: inline-block;
@@ -457,9 +447,11 @@
               <div class="timeline-progress" id="timelineProgress"></div>
             </div>
             <div class="timeline-entry left">
-              <div class="timeline-card">
+              <div class="timeline-card itc">
                 <div class="exp-header">
-                  <img src="images/itcinfotech.png" class="exp-logo">
+                  <a href="https://www.itcinfotech.com/" target="_blank">
+            <img src="images/itcinfotech.png" class="exp-logo" alt="ITC Infotech Logo">
+          </a>
                   <div class="exp-title">
                     <h3>Associate IT Consultant</h3>
                     <span class="exp-year">Sept 2023 – Present</span>
@@ -474,9 +466,11 @@
             </div>
 
             <div class="timeline-entry right">
-              <div class="timeline-card">
+              <div class="timeline-card highradius">
                 <div class="exp-header">
-                  <img src="images/highradius-logo.png" class="exp-logo">
+          <a href="https://www.highradius.com/" target="_blank">
+            <img src="images/highradius-logo.png" class="exp-logo" alt="HighRadius Logo">
+          </a>
                   <div class="exp-title">
                   <h3>Intern</h3>
                   <span class="exp-year">Jan 2022 – Apr 2022</span>
@@ -618,6 +612,40 @@
         progress.style.height = `${progressHeight}%`;
       });
     </script>
+
+    <script>
+  const entries = document.querySelectorAll(".timeline-entry");
+
+  function revealOnScroll() {
+    entries.forEach((entry) => {
+      const rect = entry.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        entry.classList.add("show");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealOnScroll);
+  window.addEventListener("load", revealOnScroll);
+
+  // Progress line fill
+  window.addEventListener('scroll', () => {
+    const progress = document.getElementById('timelineProgress');
+    const container = document.querySelector('.timeline-container');
+    const containerTop = container.getBoundingClientRect().top;
+    const containerHeight = container.offsetHeight;
+    const windowHeight = window.innerHeight;
+    let progressHeight;
+    if (containerTop < windowHeight && containerTop + containerHeight > 0) {
+      const visiblePart = windowHeight - containerTop;
+      const scrollPercent = Math.min(1, visiblePart / containerHeight);
+      progressHeight = scrollPercent * 100;
+    } else {
+      progressHeight = 0;
+    }
+    progress.style.height = `${progressHeight}%`;
+  });
+</script>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
