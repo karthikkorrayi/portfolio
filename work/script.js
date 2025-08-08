@@ -1,5 +1,3 @@
-// Toggle Education (removed old toggle behavior; not used now)
-
 // Experience timeline scroll progress
 window.addEventListener('scroll', () => {
   const progress = document.getElementById('timelineProgress');
