@@ -1,17 +1,16 @@
-function toggleEducation() {
-  const hidden = document.getElementById("hiddenEdu");
-  const btn = document.querySelector(".show-all-btn");
-  const isExpanded = hidden.style.display === "block";
-  hidden.style.display = isExpanded ? "none" : "block";
-  btn.textContent = isExpanded ? "Show All 3 educations" : "";
-}
+// Toggle Education (removed old toggle behavior; not used now)
 
+// Experience timeline scroll progress
 window.addEventListener('scroll', () => {
   const progress = document.getElementById('timelineProgress');
-  const container = document.querySelector('.timeline-container');
+  if (!progress) return;
+  const container = progress.closest('.timeline-container');
+  if (!container) return;
+
   const containerTop = container.getBoundingClientRect().top;
   const containerHeight = container.offsetHeight;
   const windowHeight = window.innerHeight;
+
   let progressHeight;
   if (containerTop < windowHeight && containerTop + containerHeight > 0) {
     const visiblePart = windowHeight - containerTop;
@@ -23,8 +22,30 @@ window.addEventListener('scroll', () => {
   progress.style.height = `${progressHeight}%`;
 });
 
-const entries = document.querySelectorAll(".timeline-entry");
+// Education timeline scroll progress
+window.addEventListener('scroll', () => {
+  const progress = document.getElementById('educationTimelineProgress');
+  if (!progress) return;
+  const container = progress.closest('.timeline-container');
+  if (!container) return;
 
+  const containerTop = container.getBoundingClientRect().top;
+  const containerHeight = container.offsetHeight;
+  const windowHeight = window.innerHeight;
+
+  let progressHeight;
+  if (containerTop < windowHeight && containerTop + containerHeight > 0) {
+    const visiblePart = windowHeight - containerTop;
+    const scrollPercent = Math.min(1, visiblePart / containerHeight);
+    progressHeight = scrollPercent * 100;
+  } else {
+    progressHeight = 0;
+  }
+  progress.style.height = `${progressHeight}%`;
+});
+
+// Reveal entries on scroll
+const entries = document.querySelectorAll(".timeline-entry");
 function revealOnScroll() {
   entries.forEach((entry) => {
     const rect = entry.getBoundingClientRect();
@@ -33,23 +54,5 @@ function revealOnScroll() {
     }
   });
 }
-
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
-
-window.addEventListener('scroll', () => {
-  const progress = document.getElementById('timelineProgress');
-  const container = document.querySelector('.timeline-container');
-  const containerTop = container.getBoundingClientRect().top;
-  const containerHeight = container.offsetHeight;
-  const windowHeight = window.innerHeight;
-  let progressHeight;
-  if (containerTop < windowHeight && containerTop + containerHeight > 0) {
-    const visiblePart = windowHeight - containerTop;
-    const scrollPercent = Math.min(1, visiblePart / containerHeight);
-    progressHeight = scrollPercent * 100;
-  } else {
-    progressHeight = 0;
-  }
-  progress.style.height = `${progressHeight}%`;
-});

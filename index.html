@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-
+<html lang="en">
   <head>
     <title>portfolio - kk</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    
     <link rel="stylesheet" href="work/style.css" />
   </head>
 
@@ -68,6 +67,7 @@
             <div class="timeline-line">
               <div class="timeline-progress" id="timelineProgress"></div>
             </div>
+
             <div class="timeline-entry left">
               <div class="timeline-card itc">
                 <div class="exp-header">
@@ -92,15 +92,15 @@
                     <img src="images/highradius-logo.png" class="exp-logo" alt="HighRadius Logo">
                   </a>
                   <div class="exp-title">
-                  <h3>Intern</h3>
-                  <span class="exp-year">Jan 2022 – Apr 2022</span>
+                    <h3>Intern</h3>
+                    <span class="exp-year">Jan 2022 – Apr 2022</span>
                   </div>
                 </div>
                 <p>
-                Developed a web app for the support team to manage product receipts and customer returns. 
-                Collaborated with senior developers to enhance code quality and performance. 
-                The app captured customer details, return dates, and deadlines, improving tracking and communication. 
-                Streamlined internal workflows and boosted response times in support operations.
+                  Developed a web app for the support team to manage product receipts and customer returns. 
+                  Collaborated with senior developers to enhance code quality and performance. 
+                  The app captured customer details, return dates, and deadlines, improving tracking and communication. 
+                  Streamlined internal workflows and boosted response times in support operations.
                 </p>
               </div>
             </div>
@@ -137,56 +137,76 @@
           </div>
         </div>
 
-        <div class="education-container">
+        <!-- EDUCATION -->
+        <div class="education-section">
           <h2>Education</h2>
-          <div class="education-card" id="educationCard">
-            <div class="edu-entry">
-              <img src="images/lpu-logo.png" alt="LPU Logo" class="edu-logo">
-              <div class="edu-details">
-                <p><strong>Lovely Professional University</strong></p>
-                <p>Bachelor's of Technology - BTech, Computer Science</p>
-                <p class="edu-year">2019 - 2023</p>
-              </div>
+          <div class="timeline-container education-timeline">
+            <div class="timeline-line">
+              <div class="timeline-progress" id="educationTimelineProgress"></div>
             </div>
 
-            <hr class="divider" />
-
-            <div class="edu-entry">
-              <img src="images/sri_chaitanya_educational_institutions_logo.jpeg" alt="Sri Chaitanya Logo" class="edu-logo">
-              <div class="edu-details">
-                <p><strong>Sri Chaitanya College</strong></p>
-                <p>Intermediate, MPC</p>
-                <p class="edu-year">May 2017 - Mar 2019</p>
+            <!-- LEFT ENTRY: logo on RIGHT of line -->
+            <div class="timeline-entry left">
+              <!-- floating logo opposite side of line -->
+              <div class="edu-logo-float" aria-hidden="true">
+                <img src="images/lpu-logo.png" alt="LPU Logo">
               </div>
-            </div>
 
-            <div class="hidden-entry" id="hiddenEdu">
-              <hr class="divider" />
-              <div class="edu-entry">
-                <img src="images/narayana.png" alt="Narayana Logo" class="edu-logo">
-                <div class="edu-details">
-                  <p><strong>Narayana High School</strong></p>
-                  <p>10th, SSC</p>
-                  <p class="edu-year">Mar 2017</p>
+              <div class="timeline-card lpu">
+                <div class="edu-header">
+                  <h3>B.Tech - Computer Science</h3>
+                  <span class="edu-duration">2019 – 2023</span>
                 </div>
+                <p class="edu-institute"><strong>Lovely Professional University</strong></p>
+                <p class="edu-location">Phagwara, Punjab</p>
               </div>
             </div>
-            
-            <button class="show-all-btn" onclick="toggleEducation()">Show All 3 educations</button>
+
+            <!-- RIGHT ENTRY: logo on LEFT of line -->
+            <div class="timeline-entry right">
+              <!-- floating logo opposite side of line -->
+              <div class="edu-logo-float" aria-hidden="true">
+                <img src="images/sri_chaitanya_educational_institutions_logo.jpeg" alt="Sri Chaitanya Logo">
+              </div>
+
+              <div class="timeline-card sri-chaitanya">
+                <div class="edu-header">
+                  <h3>Intermediate - MPC</h3>
+                  <span class="edu-duration">2017 – 2019</span>
+                </div>
+                <p class="edu-institute"><strong>Sri Chaitanya Junior College</strong></p>
+                <p class="edu-location">Vijayawada, Andhra Pradesh</p>
+              </div>
+            </div>
+
+            <!-- LEFT ENTRY: logo on RIGHT of line -->
+            <div class="timeline-entry left">
+              <!-- floating logo opposite side of line -->
+              <div class="edu-logo-float" aria-hidden="true">
+                <img src="images/narayana.png" alt="Narayana Logo">
+              </div>
+
+              <div class="timeline-card narayana">
+                <div class="edu-header">
+                  <h3>10th - SSC</h3>
+                  <span class="edu-duration">2016 – 2017</span>
+                </div>
+                <p class="edu-institute"><strong>Narayana High School</strong></p>
+                <p class="edu-location">Visakhapatnam, Andhra Pradesh</p>
+              </div>
+            </div>
           </div>
-        </div> 
+        </div>
 
         <div class="education-container" style="text-align:center; margin-top: 40px;">
           <a href="Certificates/Karthik_Korrayi_Resume.pdf" target="_blank" class="cv-download-btn"> 📄 View My Resume </a>
         </div>
-
-        
       </section>
     </div>
 
     <!-- Copyright -->
     <div id="copyright">
-        <ul><li>&copy; karthik-korrayi</li>
+      <ul><li>&copy; karthik-korrayi</li></ul>
     </div>
 
     <script src="assets/js/jquery.min.js"></script>
