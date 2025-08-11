@@ -51,7 +51,7 @@ function revealOnScroll() {
         const index = rows.indexOf(el);
         el.style.setProperty('--stagger', `${Math.min(index * 0.12, 0.6)}s`);
         el.classList.add('in-view');
-        io.unobserve(el); // animate once
+        io.unobserve(el);
       }
     });
   }, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
