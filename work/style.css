@@ -7,9 +7,8 @@
   /* Experience vars */
   --rail-width: 4px;          /* left continuous grey line */
   --rail-color: #e6e6e6;
-  --divider-color: #e9e9e9;   /* vertical divider between logo and content */
   --exp-bg: #fff;
-  --exp-radius: 14px;
+  --exp-radius: 1px;
   /* --exp-shadow: 0 6px 20px rgba(0,0,0,.08); */
 }
 
@@ -40,8 +39,41 @@
     border-right: none;
     border-bottom: 1px solid var(--divider-color);
     padding: 14px;
-    background: #f9f9f9;
+    background: #ffffff;
   }
+}
+
+/* Intro actions */
+.intro-actions {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #00094d;
+  color: #fff !important;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1;
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+}
+
+.btn-primary:hover {
+  background: #1c1c86;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+
+.btn-primary .icon {
+  font-size: 0.95em;
 }
 
 /* ---------- Intro (unchanged basics) ---------- */
@@ -94,17 +126,16 @@
 
 /* Logo column */
 .exp-logo-wrap{
-  background: #f9f9f9;
   border-radius: 12px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
-  border-right: 4px solid var(--divider-color); /* vertical line between logo and card */
+  align-items: top;      /* valid value */
+  justify-content: top;  /* valid value */
+  padding: 30px;
+  border-right: 2px solid var(--divider-color); /* vertical line between logo and card */
 }
 .exp-logo{
-  max-width: 80%;
-  max-height: 80px;
+  max-width: 120%;
+  max-height: 800px;
   object-fit: contain;
 }
 .exp-logo[style*="display: none"] + .exp-logo-fallback,
@@ -115,7 +146,7 @@
   display:none;
   width: 80px; height: 80px;
   align-items:center; justify-content:center;
-  background:#eef0ff; color:#1f2bd0; font-weight: 700; border-radius: 10px;
+  background:#ffffff; color:#1f2bd0; font-weight: 700; border-radius: 10px;
 }
 
 /* Content card (right) */
@@ -199,3 +230,48 @@
 /* Resume button */
 .cv-download-btn{ display:inline-block; padding:12px 24px; background-color:#00094d; color:#fff; font-size:1em; text-decoration:none; border-radius:8px; font-weight:500; transition:background .3s ease; }
 .cv-download-btn:hover{ background-color:#1c1c86; }
+
+/* Remove forced uppercase from all headings and section titles */
+h1, h2, h3, h4, h5, h6,
+.experience-section h2,
+.skills-carousel-container h2,
+.education-section h2,
+.education-container h2,
+.timeline-entry h3 {
+  text-transform: none !important;
+}
+
+/* ===== Experience: scroll-in jump effect (jump + stay) ===== */
+
+/* Base state: hidden before entering */
+.exp-row {
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+  will-change: transform, opacity;
+}
+
+/* Fallback: when in view, make it visible and settled (works even with reduced motion) */
+.exp-row.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* If user allows motion, play the jump animation, then stay */
+@media (prefers-reduced-motion: no-preference) {
+  .exp-row.in-view {
+    animation: slideUpJump 720ms cubic-bezier(.22,.61,.36,1) var(--stagger, 0s) both;
+  }
+
+  @keyframes slideUpJump {
+    0%   { opacity: 0; transform: translateY(28px) scale(0.98); }
+    60%  { opacity: 1; transform: translateY(-6px) scale(1.005); } /* jump up */
+    80%  { transform: translateY(3px)  scale(1.0); }               /* settle */
+    100% { transform: translateY(0)    scale(1.0); }               /* stay */
+  }
+}
+
+/* Optional: subtle hover lift for the content card */
+.exp-card:hover {
+  transform: translateY(-2px);
+  transition: transform .2s ease;
+}
