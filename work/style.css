@@ -1,4 +1,9 @@
 :root {
+  --fab-bg: #00094d;
+  --fab-bg-open: #1c1c86;
+  --fab-icon: #ffffff;
+  --fab-item-bg: #00094d;
+  --fab-item-bg-active: #1c1c86;
   --timeline-dot-offset: 30px;
   --timeline-gutter: 16px;
   --edu-badge-size: 66px;
@@ -6,6 +11,138 @@
   --rail-color: #e6e6e6;
   --exp-bg: #fff;
   --exp-radius: 1px;
+
+  --safe-l: env(safe-area-inset-left, 0px);
+  --safe-r: env(safe-area-inset-right, 0px);
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --fab-margin: max(12px, var(--safe-l), var(--safe-r), var(--safe-b));
+}
+
+#mobile-fab-nav { 
+  display: none; 
+}
+
+@media (max-width: 768px) {
+  body { padding-bottom: calc(var(--fab-margin) + 20px); }
+
+  #mobile-fab-nav {
+    display: block;
+    position: fixed;
+    inset: auto var(--fab-margin) var(--fab-margin) auto;
+    z-index: 2147483647;
+    pointer-events: none;
+    transition: left .2s ease, top .2s ease, opacity .2s ease, transform .2s ease;
+  }
+  #mobile-fab-nav * { pointer-events: auto; }
+
+  #mobile-fab-nav.dragging { transition: none !important; }
+
+  #fab-toggle {
+    touch-action: none; /* IMPORTANT for mobile drag */
+    background: var(--fab-bg);
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+    transition: background .25s ease, transform .25s ease;
+  }
+
+#mobile-fab-nav.open #fab-toggle {
+  background: var(--fab-bg-open);
+}
+
+  .icon-circle {
+  width: 26px;
+  height: 26px;
+  display: block;
+  flex: 0 0 auto;
+  }
+
+  .icon-circle circle {
+    fill: #ffffff !important;
+  }
+
+  /* Menu container */
+  .fab-menu {
+    position: absolute;
+    right: 0;
+    left: auto;
+    bottom: calc(56px + 14px);
+    top: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(16px);
+    transition: opacity .22s ease, transform .22s ease, visibility 0s linear .22s;
+
+    max-width: calc(100vw - (var(--fab-margin) * 2));
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  #mobile-fab-nav.open .fab-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0s;
+  }
+
+  /* when FAB is on the LEFT half, anchor menu to the left edge of the button */
+  #mobile-fab-nav.anchor-left .fab-menu { left: 0; right: auto; }
+
+  /* when there’s not enough room above, drop DOWN below the button */
+  #mobile-fab-nav.drop-down .fab-menu {
+    top: calc(56px + 14px);
+    bottom: auto;
+  }
+
+  .fab-menu .nav-item {
+    background: var(--fab-item-bg);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    line-height: 1;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.22);
+    transform: translateY(8px);
+    opacity: 0;
+    transition: background .18s ease, transform .2s ease, opacity .2s ease;
+  }
+  
+  #mobile-fab-nav.open .fab-menu .nav-item {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  #mobile-fab-nav.open .fab-menu .nav-item:nth-child(1) { transition-delay: .04s; }
+  #mobile-fab-nav.open .fab-menu .nav-item:nth-child(2) { transition-delay: .08s; }
+  #mobile-fab-nav.open .fab-menu .nav-item:nth-child(3) { transition-delay: .12s; }
+  #mobile-fab-nav.open .fab-menu .nav-item:nth-child(4) { transition-delay: .16s; }
+
+  .fab-menu .nav-item:hover { background: var(--fab-bg-open); }
+  .fab-menu .nav-item.active {
+    background: var(--fab-item-bg-active);
+    box-shadow: 0 6px 14px rgba(28,28,134,0.35);
+  }
+
+  .fab-menu .icon { width: 20px; height: 20px; fill: #fff; }
+
+  @media (prefers-reduced-motion: reduce) {
+    #mobile-fab-nav, #fab-toggle, .fab-menu, .fab-menu .nav-item { transition: none !important; }
+  }
 }
 
 /* ---------- Global Typography Reset ---------- */
@@ -53,6 +190,11 @@ h1, h2, h3, h4, h5, h6,
   gap: 10px;
   flex-wrap: wrap;
 }
+
+#nav {
+  margin-bottom: 40px;
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;

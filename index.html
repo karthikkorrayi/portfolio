@@ -35,6 +35,47 @@
         </ul>
       </nav>
 
+<!-- Mobile FAB Navigation (mobile-only) -->
+<nav id="mobile-fab-nav" aria-label="Mobile quick navigation">
+  <button id="fab-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="fab-menu">
+  <!-- White filled circle (inline fill to defeat template overrides) -->
+  <svg viewBox="0 0 24 24" class="icon-circle" aria-hidden="true">
+    <circle cx="12" cy="12" r="8" fill="#ffffff" />
+  </svg>
+</button>
+
+
+  <div id="fab-menu" class="fab-menu" role="menu">
+    <a href="#intro" class="nav-item" role="menuitem">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+        <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.2c-3.3 0-9.8 1.6-9.8 4.9V22h19.6v-2.9c0-3.3-6.5-4.9-9.8-4.9z"/>
+      </svg>
+      <span class="label">About</span>
+    </a>
+
+    <a href="#main" class="nav-item" role="menuitem">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+        <path d="M2 6h20v2H2V6zm0 5h20v2H2v-2zm0 5h20v2H2v-2z"/>
+      </svg>
+      <span class="label">Experience</span>
+    </a>
+
+    <a href="#skills" class="nav-item" role="menuitem">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+        <path d="M4 4h6v6H4V4zm10 0h6v6h-6V4zM4 14h6v6H4v-6zm10 0h6v6h-6v-6z"/>
+      </svg>
+      <span class="label">Skills</span>
+    </a>
+
+    <a href="#education" class="nav-item" role="menuitem">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+        <path d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2z"/>
+      </svg>
+      <span class="label">Education</span>
+    </a>
+  </div>
+</nav>
+
       <!-- Main -->
       <section class="main" id="main">
         <!-- Featured Post -->
@@ -129,7 +170,7 @@
         </section>
       
         <!-- SKILLS -->
-        <div class="skills-carousel-container education-container">
+        <div id="skills" class="skills-carousel-container education-container">
           <h2>Skills and Technologies used</h2>
           <div class="skills-grid">
             <div class="skill"><img src="images/java.png" alt="Java"><span>Java</span></div>
@@ -160,7 +201,7 @@
         </div>
 
         <!-- EDUCATION — existing center-line timeline with badges/icons -->
-        <div class="education-section">
+        <div id="education" class="education-section">
           <h2>Education</h2>
           <div class="timeline-container education-timeline">
             <div class="timeline-line">
