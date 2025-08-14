@@ -76,6 +76,29 @@ h1, h2, h3, h4, h5, h6,
   font-size: 0.95em;
 }
 
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #0a66c2;
+  color: #fff !important;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1;
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+}
+.btn-secondary:hover {
+  background: #004182;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+.btn-secondary .icon {
+  font-size: 0.95em;
+}
+
 /* ---------- Experience Section ---------- */
 .experience-section {
   max-width: 1000px;

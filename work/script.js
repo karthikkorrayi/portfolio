@@ -58,3 +58,18 @@ function revealOnScroll() {
 
   rows.forEach((r) => io.observe(r));
 })();
+
+let lastScrollY = window.pageYOffset;
+const scrollNav = document.getElementById('scrollNav');
+
+window.addEventListener('scroll', () => {
+  const currentScrollY = window.pageYOffset;
+
+  if (currentScrollY > lastScrollY && currentScrollY > 100) {
+    scrollNav.classList.add('hide'); // scroll down
+  } else {
+    scrollNav.classList.remove('hide'); // scroll up
+  }
+
+  lastScrollY = currentScrollY;
+});
