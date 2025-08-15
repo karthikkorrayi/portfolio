@@ -1,4 +1,4 @@
-// EDUCATION timeline progress (experience is plain rows; no timeline there)
+// Education timeline progress
 function setTimelineProgress(progressEl) {
   if (!progressEl) return;
   const container = progressEl.closest('.timeline-container');
@@ -38,7 +38,7 @@ function revealOnScroll() {
   });
 }
 
-// EXPERIENCE: slide-in on scroll with a small "jump"
+// Experience: slide-in on scroll with a small "jump"
 (function setupExperienceReveal() {
   const rows = Array.from(document.querySelectorAll('.exp-row'));
   if (!rows.length || !('IntersectionObserver' in window)) return;
@@ -59,20 +59,6 @@ function revealOnScroll() {
   rows.forEach((r) => io.observe(r));
 })();
 
-// const fabNav = document.getElementById('mobile-fab-nav');
-// const toggle = document.getElementById('fab-toggle');
-// toggle.addEventListener('click', () => {
-//   fabNav.classList.toggle('open');
-//   toggle.setAttribute(
-//     'aria-expanded',
-//     fabNav.classList.contains('open') ? 'true' : 'false'
-//   );
-// });
-
-// ===== FAB: click to open, drag to move, snap to edge, remember position =====
-
-// ===== FAB: click to open, drag to move, snap to edge, remember position, smart-anchoring =====
-// ===== FAB: draggable, edge-snap, on-screen clamp, safe anchors, persistent =====
 (function () {
   const fabNav = document.getElementById('mobile-fab-nav');
   const toggle = document.getElementById('fab-toggle');
@@ -80,10 +66,9 @@ function revealOnScroll() {
   if (!fabNav || !toggle || !menu) return;
 
   const BTN = () => toggle.offsetWidth || 56;
-  const MARGIN = 12; // hard min gap from edges (also reflected in CSS)
+  const MARGIN = 12;
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
-  // Compute safe margins including iOS safe-area
   function safeMargins() {
     const cs = getComputedStyle(document.documentElement);
     const sl = parseFloat(cs.getPropertyValue('--safe-l')) || 0;
@@ -166,7 +151,7 @@ function revealOnScroll() {
     } catch { /* ignore bad data */ }
   })();
 
-  // Toggle open/close (anchor first to avoid off-screen pop)
+  // Toggle open/close
   function setExpanded(open) {
     if (open) fabNav.classList.add('open'); else fabNav.classList.remove('open');
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -251,6 +236,117 @@ function revealOnScroll() {
   window.addEventListener('pointermove', onPointerMove, { passive: true });
   window.addEventListener('pointerup',   onPointerUp,   { passive: false });
 
-  // Initial anchor (in case no saved pos)
+  // Initial anchor
   applyMenuAnchors();
+})();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const roles = [
+    "DevOps Platform Engineer",
+    "Developer",
+    "Application Packaging Associate"
+  ];
+  
+  const roleElement = document.querySelector(".typing-role");
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typingSpeed = 100;
+  const eraseSpeed = 60;
+  const delayBetweenRoles = 1500;
+
+  function typeEffect() {
+    const currentRole = roles[roleIndex];
+    
+    if (!isDeleting && charIndex < currentRole.length) {
+      roleElement.innerHTML = currentRole.substring(0, charIndex + 1) + `<span class="cursor">_</span>`;
+      charIndex++;
+      setTimeout(typeEffect, typingSpeed);
+    } 
+    else if (isDeleting && charIndex > 0) {
+      roleElement.innerHTML = currentRole.substring(0, charIndex - 1) + `<span class="cursor">_</span>`;
+      charIndex--;
+      setTimeout(typeEffect, eraseSpeed);
+    } 
+    else if (!isDeleting && charIndex === currentRole.length) {
+      setTimeout(() => isDeleting = true, delayBetweenRoles);
+      setTimeout(typeEffect, delayBetweenRoles);
+    } 
+    else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      setTimeout(typeEffect, typingSpeed);
+    }
+  }
+
+  typeEffect();
+});
+
+
+(function () {
+  const el = document.querySelector('.highlight-title');
+  if (!el) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) {
+    el.classList.add('revealed');
+    return;
+  }
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          el.classList.add('revealed');
+          io.unobserve(el);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.2 });
+
+    io.observe(el);
+  } else {
+    el.classList.add('revealed');
+  }
+})();
+
+// ===== Count-up animation for Intro Stats =====
+(function () {
+  const container = document.getElementById('intro-stats');
+  if (!container) return;
+  const counters = Array.from(container.querySelectorAll('.count'));
+  if (!counters.length) return;
+
+  function animateCount(el, to, duration = 900) {
+    const start = 0;
+    const startTime = performance.now();
+    const fmt = new Intl.NumberFormat();
+
+    function tick(now) {
+      const p = Math.min(1, (now - startTime) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const value = Math.round(start + (to - start) * eased);
+      el.textContent = fmt.format(value);
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function run() {
+    counters.forEach(el => {
+      const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      animateCount(el, target);
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          run();
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    io.observe(container);
+  } else {
+    run();
+  }
 })();

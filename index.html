@@ -35,46 +35,45 @@
         </ul>
       </nav>
 
-<!-- Mobile FAB Navigation (mobile-only) -->
-<nav id="mobile-fab-nav" aria-label="Mobile quick navigation">
-  <button id="fab-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="fab-menu">
-  <!-- White filled circle (inline fill to defeat template overrides) -->
-  <svg viewBox="0 0 24 24" class="icon-circle" aria-hidden="true">
-    <circle cx="12" cy="12" r="8" fill="#ffffff" />
-  </svg>
-</button>
+      <!-- Mobile FAB Navigation (mobile-only) -->
+      <nav id="mobile-fab-nav" aria-label="Mobile quick navigation">
+        <button id="fab-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="fab-menu">
+          <svg viewBox="0 0 24 24" class="icon-circle" aria-hidden="true">
+            <circle cx="12" cy="12" r="8" fill="#ffffff" />
+          </svg>
+        </button>
 
 
-  <div id="fab-menu" class="fab-menu" role="menu">
-    <a href="#intro" class="nav-item" role="menuitem">
-      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-        <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.2c-3.3 0-9.8 1.6-9.8 4.9V22h19.6v-2.9c0-3.3-6.5-4.9-9.8-4.9z"/>
-      </svg>
-      <span class="label">About</span>
-    </a>
+        <div id="fab-menu" class="fab-menu" role="menu">
+          <a href="#intro" class="nav-item" role="menuitem">
+            <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+              <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.2c-3.3 0-9.8 1.6-9.8 4.9V22h19.6v-2.9c0-3.3-6.5-4.9-9.8-4.9z"/>
+            </svg>
+            <span class="label">About</span>
+          </a>
 
-    <a href="#main" class="nav-item" role="menuitem">
-      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-        <path d="M2 6h20v2H2V6zm0 5h20v2H2v-2zm0 5h20v2H2v-2z"/>
-      </svg>
-      <span class="label">Experience</span>
-    </a>
+          <a href="#main" class="nav-item" role="menuitem">
+            <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+              <path d="M2 6h20v2H2V6zm0 5h20v2H2v-2zm0 5h20v2H2v-2z"/>
+            </svg>
+            <span class="label">Experience</span>
+          </a>
 
-    <a href="#skills" class="nav-item" role="menuitem">
-      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-        <path d="M4 4h6v6H4V4zm10 0h6v6h-6V4zM4 14h6v6H4v-6zm10 0h6v6h-6v-6z"/>
-      </svg>
-      <span class="label">Skills</span>
-    </a>
+          <a href="#skills" class="nav-item" role="menuitem">
+            <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+              <path d="M4 4h6v6H4V4zm10 0h6v6h-6V4zM4 14h6v6H4v-6zm10 0h6v6h-6v-6z"/>
+            </svg>
+            <span class="label">Skills</span>
+          </a>
 
-    <a href="#education" class="nav-item" role="menuitem">
-      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
-        <path d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2z"/>
-      </svg>
-      <span class="label">Education</span>
-    </a>
-  </div>
-</nav>
+          <a href="#education" class="nav-item" role="menuitem">
+            <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+              <path d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2z"/>
+            </svg>
+            <span class="label">Education</span>
+          </a>
+        </div>
+      </nav>
 
       <!-- Main -->
       <section class="main" id="main">
@@ -85,13 +84,15 @@
           </div>
           <div class="intro-text education-container">
             <h2>Hi there! I'm Karthik 👋</h2>
+            <h6 class="typing-role"></h6>
+            <h1 class="highlight-title highlight-swipe">Associate IT Consultant</h1>
+            <h2 class="location">Based in Bangalore, India.</h2>
             <p>
-              I’m a tech enthusiast from Andhra Pradesh who loves solving problems and creating cool things for the web.<br>
-              I love learning new technologies — it’s like a puzzle I can’t wait to figure out. If there’s a challenge at work or something new to explore, I’m all in.<br>
-              Learning new tech feels like solving a fun puzzle, and I’m always up for a challenge.<br> Off-screen, you’ll find me clicking photos, sketching, vibing to music, or planning my next chai break.
-              I’m all about growing, creating, and connecting — whether for a project or just a good chat!
+              With a background in automation, cloud, and development. I’m passionate about building smart, scalable solutions that make life easier. 
+              I enjoy blending creativity, technology, and AI to bring big ideas to life — from concept to code. 
+              Always curious and eager to learn, I see every project as an opportunity to innovate, optimize, and create something impactful.
             </p>
-             <!-- New: Write to me button -->
+            <!-- New: Write to me button -->
               <div class="intro-actions">
                 <a
                   class="btn-primary"
@@ -101,14 +102,36 @@
                   <span>Write to me</span>
                 </a>
 
-              <a
-                class="btn-secondary"
-                href="https://www.linkedin.com/in/karthik-korrayi/"
-                target="_blank"
-                rel="noopener"
-              >
-                <span class="icon brands fa-linkedin" aria-hidden="true"></span>
-              </a>
+                <a
+                  class="btn-secondary btn-icon"
+                  href="https://www.linkedin.com/in/karthik-korrayi/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span class="icon brands fa-linkedin" aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <div class="intro-stats" id="intro-stats">
+                <div class="stat">
+                  <div class="stat-number">
+                    <span class="count" data-count="2">0</span><span class="suffix">+ </span>
+                  </div>
+                  <div class="stat-label">
+                    <span>Years of</span>
+                    <span>Experience</span>
+                  </div>
+                </div>
+
+                <div class="stat">
+                  <div class="stat-number">
+                    <span class="count" data-count="3">0</span><span class="suffix">+ </span>
+                  </div>
+                  <div class="stat-label">
+                    <span>Hands-on</span>
+                    <span>Projects</span>
+                  </div>
+                </div>
               </div>
           </div>
         </article>     
@@ -133,7 +156,7 @@
                 <p class="exp-meta">
                   <span class="icon solid fa-calendar-alt"></span> Sept 2023 – Present
                   &nbsp;&nbsp;&nbsp;
-                  <span class="icon solid fa-map-marker-alt"></span> Bengaluru, Karnataka, India
+                  <span class="icon solid fa-map-marker-alt"></span> Bangalore, Karnataka, India
                 </p>
                 <ul class="exp-points">
                   <li>Built Angular components, integrated APIs, and improved performance.</li>
@@ -179,24 +202,24 @@
             <div class="skill"><img src="images/nodejs.png" alt="Node.js"><span>Node.js</span></div>
             <div class="skill"><img src="images/mysql.png" alt="MySQL"><span>MySQL</span></div>
             <div class="skill"><img src="images/mongo.png" alt="MongoDB"><span>MongoDB</span></div>
-            <div class="skill"><img src="images/jira.png" alt="Jira"><span>Jira</span></div>
-            <div class="skill"><img src="images/github.svg" alt="GitHub"><span>GitHub</span></div>
-            <div class="skill"><img src="images/gitlab.png" alt="GitLab"><span>GitLab</span></div>
-            <div class="skill"><img src="images/intellij.png" alt="IntelliJ"><span>IntelliJ</span></div>
-            <div class="skill"><img src="images/vscode.png" alt="VS Code"><span>VS Code</span></div>
-            <div class="skill"><img src="images/jenkins.svg" alt="Jenkins"><span>Jenkins</span></div>
+            <div class="skill"><img src="images/docker.png" alt="Docker"><span>Docker</span></div>
+            <div class="skill"><img src="images/powershell.png" alt="Powershell"><span>Powershell</span></div>
+            <div class="skill"><img src="images/terraform.png" alt="Terraform"><span>Terraform</span></div>
+            <div class="skill"><img src="images/bicep.webp" alt="Bicep"><span>Bicep</span></div>
+            <div class="skill"><img src="images/arm.png" alt="ARM"><span>ARM</span></div>
             <div class="skill"><img src="images/azure.png" alt="Azure"><span>Azure</span></div>
             <div class="skill"><img src="images/azuredevops.svg" alt="ADO"><span>ADO</span></div>
             <div class="skill"><img src="images/aws.png" alt="AWS"><span>AWS</span></div>
-            <div class="skill"><img src="images/bash.svg" alt="Bash"><span>Bash</span></div>
-            <div class="skill"><img src="images/powershell.png" alt="Powershell"><span>Powershell</span></div>
-            <div class="skill"><img src="images/bicep.webp" alt="Bicep"><span>Bicep</span></div>
-            <div class="skill"><img src="images/terraform.png" alt="Terraform"><span>Terraform</span></div>
-            <div class="skill"><img src="images/arm.png" alt="ARM"><span>ARM</span></div>
-            <div class="skill"><img src="images/uipath.svg" alt="UiPath"><span>UiPath</span></div>
-            <div class="skill"><img src="images/figma.webp" alt="Figma"><span>Figma</span></div>
-            <div class="skill"><img src="images/powerbi.png" alt="Power BI"><span>Power BI</span></div>
+            <div class="skill"><img src="images/gitlab.png" alt="GitLab"><span>GitLab</span></div>
+            <div class="skill"><img src="images/jenkins.svg" alt="Jenkins"><span>Jenkins</span></div>
+            <div class="skill"><img src="images/vscode.png" alt="VS Code"><span>VS Code</span></div>
+            <div class="skill"><img src="images/intellij.png" alt="IntelliJ"><span>IntelliJ</span></div>
+            <div class="skill"><img src="images/jira.png" alt="Jira"><span>Jira</span></div>
             <div class="skill"><img src="images/ms.png" alt="MS Office"><span>MS Office</span></div>
+            <div class="skill"><img src="images/powerbi.png" alt="Power BI"><span>Power BI</span></div>
+            <div class="skill"><img src="images/github.svg" alt="GitHub"><span>GitHub</span></div>
+            <div class="skill"><img src="images/figma.webp" alt="Figma"><span>Figma</span></div>
+            <div class="skill"><img src="images/uipath.svg" alt="UiPath"><span>UiPath</span></div>
           </div>
         </div>
 
