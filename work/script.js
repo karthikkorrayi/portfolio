@@ -350,3 +350,66 @@ document.addEventListener("DOMContentLoaded", () => {
     run();
   }
 })();
+
+// ===== Lightweight Circle Cursor (desktop-only) =====
+(function () {
+  const isCoarse = matchMedia('(hover: none), (pointer: coarse)').matches;
+  if (isCoarse) return;
+
+  const cursor = document.getElementById('kk-cursor');
+  if (!cursor) return;
+
+  let x = window.innerWidth / 2, y = window.innerHeight / 2;
+  let tx = x, ty = y;
+  let rafId = null;
+  const ease = 0.3;
+
+  function loop() {
+    x += (tx - x) * ease;
+    y += (ty - y) * ease;
+
+    cursor.style.setProperty('--x', `${x}px`);
+    cursor.style.setProperty('--y', `${y}px`);
+    cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    rafId = requestAnimationFrame(loop);
+  }
+
+  function onMove(e) {
+    cursor.classList.add('is-visible');
+    tx = e.clientX;
+    ty = e.clientY;
+    if (rafId === null) rafId = requestAnimationFrame(loop);
+  }
+
+  function onEnter() {
+    cursor.classList.remove('is-hidden');
+  }
+  function onLeave() {
+    cursor.classList.add('is-hidden');
+  }
+
+  function setInteractiveState(on) {
+    cursor.classList.toggle('is-link', !!on);
+  }
+  document.addEventListener('mouseover', (e) => {
+    const t = e.target;
+    if (!t) return;
+    const interactive =
+      t.closest('a, button, [role="button"], input, textarea, select, .btn-primary, .btn-secondary');
+    setInteractiveState(!!interactive);
+  });
+
+  // Press feedback
+  document.addEventListener('mousedown', () => cursor.classList.add('is-down'));
+  document.addEventListener('mouseup',   () => cursor.classList.remove('is-down'));
+
+  // Track pointer
+  window.addEventListener('mousemove', onMove, { passive: true });
+  window.addEventListener('mouseenter', onEnter, { passive: true });
+  window.addEventListener('mouseleave', onLeave, { passive: true });
+
+  // Cleanup on unload
+  window.addEventListener('pagehide', () => {
+    if (rafId !== null) cancelAnimationFrame(rafId);
+  });
+})();
