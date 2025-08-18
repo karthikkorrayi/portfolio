@@ -57,6 +57,35 @@ function revealOnScroll() {
   }, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
 
   rows.forEach((r) => io.observe(r));
+  document.addEventListener("DOMContentLoaded", () => {
+    const expMetas = document.querySelectorAll(".exp-card .exp-meta");
+
+    expMetas.forEach((meta) => {
+      const nodes = Array.from(meta.childNodes);
+      const textNode = nodes.find(n => n.nodeType === Node.TEXT_NODE && n.textContent.includes("–"));
+
+      if (textNode) {
+        const match = textNode.textContent.match(/(\w+ \d{4})\s*–\s*(Present|\w+ \d{4})/);
+
+        if (match) {
+          const start = new Date(match[1]);
+          const end = match[2] === "Present" ? new Date() : new Date(match[2]);
+
+          let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+          let years = Math.floor(months / 12);
+          let remMonths = months % 12;
+
+          let durationText = "";
+          if (years > 0) durationText += ` ${years} yr${years > 1 ? "s" : ""}`;
+          if (remMonths > 0) durationText += ` ${remMonths} mo`;
+
+          if (durationText) {
+            textNode.textContent = textNode.textContent.trim() + durationText + " ";
+          }
+        }
+      }
+    });
+  });
 })();
 
 (function () {

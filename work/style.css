@@ -85,7 +85,7 @@
   #mobile-fab-nav.dragging { transition: none !important; }
 
   #fab-toggle {
-    touch-action: none; /* IMPORTANT for mobile drag */
+    touch-action: none;
     background: var(--fab-bg);
     border: none;
     border-radius: 50%;
@@ -114,7 +114,6 @@
     fill: #ffffff !important;
   }
 
-  /* Menu container */
   .fab-menu {
     position: absolute;
     right: 0;
@@ -143,10 +142,7 @@
     transition-delay: 0s;
   }
 
-  /* when FAB is on the LEFT half, anchor menu to the left edge of the button */
   #mobile-fab-nav.anchor-left .fab-menu { left: 0; right: auto; }
-
-  /* when there’s not enough room above, drop DOWN below the button */
   #mobile-fab-nav.drop-down .fab-menu {
     top: calc(56px + 14px);
     bottom: auto;
@@ -264,7 +260,6 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-/* ===== Intro 2-Column Stats ===== */
 .intro-stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -312,7 +307,6 @@ h1, h2, h3, h4, h5, h6,
   font-size: clamp(.9rem, .4vw + .8rem, 1.05rem);
 }
 
-/* mobile stacking when super narrow (≤420px) */
 @media (max-width: 420px) {
   .intro-stats {
     grid-template-columns: 1fr 1fr;
@@ -361,7 +355,7 @@ h1, h2, h3, h4, h5, h6,
   content: "";
   position: absolute;
   inset: 0;
-  background: #783efd;
+  background: #773efdad;
   border-radius: 10px;
   transform: skewY(-5deg);
   z-index: -1;
@@ -512,10 +506,13 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 700;
   border-radius: 10px;
 }
-.exp-card {
-  background: var(--exp-bg);
-  border-radius: var(--exp-radius);
-  padding: 20px;
+.exp-card {  
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 16px 0 !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  transition: none !important;
 }
 .exp-role {
   margin: 0 0 8px;
@@ -543,12 +540,7 @@ h1, h2, h3, h4, h5, h6,
 .exp-points li {
   margin-bottom: 6px;
 }
-.exp-card:hover {
-  transform: translateY(-2px);
-  transition: transform .2s ease;
-}
 
-/* ---------- Skills Section ---------- */
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
@@ -575,7 +567,6 @@ h1, h2, h3, h4, h5, h6,
   transform: scale(1.1);
 }
 
-/* ---------- Education Timeline ---------- */
 .education-section h2 {
   font-size: 1.8em;
   font-weight: normal;
@@ -714,7 +705,6 @@ h1, h2, h3, h4, h5, h6,
   vertical-align: middle;
 }
 
-/* ---------- Resume Button ---------- */
 .cv-download-btn {
   display: inline-block;
   padding: 12px 24px;
@@ -730,7 +720,7 @@ h1, h2, h3, h4, h5, h6,
   background-color: #1c1c86;
 }
 
-/* ---------- Mobile Styles ---------- */
+
 @media (max-width: 768px) {
   .intro-card {
     flex-direction: column;
@@ -752,31 +742,36 @@ h1, h2, h3, h4, h5, h6,
   }
 
   .exp-row {
-    grid-template-columns: 1fr;
-    padding: 10px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
   }
 
   .exp-logo-wrap {
-    padding: 10px;
-    justify-content: left;
-    align-items: left;
-    background: #fff;
+    flex: 0 0 64px;
+    padding: 0;
+    margin-left: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
   }
 
   .exp-logo {
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 54px;
+    max-height: 54px;
   }
 
   .exp-logo-fallback {
-    width: 60px;
-    height: 60px;
-    font-size: 1rem;
+    width: 54px;
+    height: 54px;
+    font-size: 0.85rem;
   }
 
   .exp-card {
-    border-left: 5px solid #e6e6e6;
-    margin-top: 10px;
+    flex: 1;
+    border: none;
+    padding: 0;
   }
 
   .skills-grid {
